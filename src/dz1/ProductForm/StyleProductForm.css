@@ -1,0 +1,15 @@
+.inputAddProduct {
+  margin-right: 5px;
+}
+
+.valid {
+  border-color: green;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+#errorText {
+  color:red;
+}
