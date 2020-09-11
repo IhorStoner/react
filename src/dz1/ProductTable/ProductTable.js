@@ -10,14 +10,6 @@ class ProductTable extends Component {
     price: '',
     count: '',
   }
-
-  changeProduct = () => {
-    
-      return (
-        <div>hi</div>
-      )
-    
-  }
   
   render() {
     const { product } = this.props;
@@ -32,7 +24,7 @@ class ProductTable extends Component {
           <button onClick={() => this.props.onRemove(product)}>
             Удалить
           </button>
-          <button onClick={this.changeProduct}>
+          <button onClick={this.props.changeProduct} data-id={product.id}>
             Изменить
           </button>
         </Table.Cell>

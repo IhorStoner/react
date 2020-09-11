@@ -36,7 +36,6 @@ export default class AddProductForm extends Component {
         name: e.target.value,
       })
     }
-
   }
 
   onChangeCategories = (e) => {

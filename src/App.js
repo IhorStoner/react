@@ -4,6 +4,7 @@ import ProductTable from './dz1/ProductTable/ProductTable';
 import AddProductForm from './dz1/ProductForm/AddProductForm';
 import { Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import ChangeProduct from './dz1/ProductTable/ChangeProduct'
 
 class App extends Component {
 
@@ -32,6 +33,8 @@ class App extends Component {
       },
     ],
     newProduct: {},
+    isChangeProduct: false,
+    changeItem: {},
   };
 
   addProduct = (addNewProduct) => {
@@ -72,6 +75,46 @@ class App extends Component {
     }
   }
 
+  changeProduct = (e) => {
+    const productId = e.target.getAttribute('data-id');
+    const selectedProduct = this.state.products.find((product)=> productId === product.id);
+
+    this.setState({
+      isChangeProduct: true,
+      changeItem: selectedProduct,
+    })
+  }
+
+  newProducts = (name,categories,price,count) => {
+
+    
+    const products = this.state.products;
+    const selectedProduct = this.state.changeItem;
+
+    const newProduct = {
+      id: selectedProduct.id,
+      name: name,
+      categories: categories,
+      price: price,
+      count: count,
+    }
+    
+    const indexProduct = products.indexOf(selectedProduct);
+
+    products.splice(indexProduct,1,newProduct)
+
+    this.setState({
+      products: products,
+      isChangeProduct: false,
+    })
+  }
+
+  closeChangeForm = () => {
+    this.setState({
+      isChangeProduct: false,
+    })
+  }
+
   render() {
 
     const products = this.state.products;
@@ -90,11 +133,14 @@ class App extends Component {
           </Table.Header>
           <Table.Body>
             {
-              products.map((item) => <ProductTable product={item} key={item.id} onRemove={this.deleteProduct}/>)
+              products.map((item) => <ProductTable product={item} key={item.id} changeProduct={this.changeProduct} onRemove={this.deleteProduct} closeChangeForm={this.closeChangeForm}/>)
             }
           </Table.Body>    
         </Table>
         <AddProductForm onAddProduct={this.addProduct} products={products}/>
+        {
+          this.state.isChangeProduct ? <ChangeProduct product={this.state.changeItem} newProduct = {this.newProducts}></ChangeProduct> : null
+        }
       </div>
     )
 
