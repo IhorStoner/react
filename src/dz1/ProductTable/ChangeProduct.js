@@ -105,7 +105,7 @@ export default class ChangeProduct extends Component {
     const {name,categories,price,count} = this.state;
 
     if(nameValid && categoriesValid && priceValid && countValid) {
-      this.props.newProduct(name,categories,price,count);
+      this.props.newProductsArr(name,categories,price,count);
       errorText.style.display = 'none';
 
       this.setState({
@@ -121,12 +121,12 @@ export default class ChangeProduct extends Component {
   }
 
   render() {
-    const {id,name,categories,price,count} = this.state;
+    const {name,categories,price,count} = this.state;
     const product = this.props.product;
     
     return (
       <div>
-        <form Style='diplay: block'>
+        <form>
         <h2>Изменить товар {product.name}</h2>
           <Input className="inputAddProduct" id="name" value={name} onChange={this.onChangeName} placeholder='Название' />
           <Input className="inputAddProduct" id="categories" value={categories} onChange={this.onChangeCategories} placeholder='Категория' />

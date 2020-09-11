@@ -41,7 +41,7 @@ class App extends Component {
     const { products } = this.state;
 
     const newProduct = {
-      id: Math.floor(Math.random() * (100 - 4)) + 4,
+      id: String(Math.floor(Math.random() * (100 - 4)) + 4),
       name: addNewProduct.name,
       categories: addNewProduct.categories,
       price: addNewProduct.price,
@@ -50,7 +50,7 @@ class App extends Component {
 
     this.setState({
       newProduct: {
-        id: Math.floor(Math.random() * (100 - 4)) + 4,
+        id: String(Math.floor(Math.random() * (100 - 4)) + 4),
         name: addNewProduct.name,
         categories: addNewProduct.categories,
         price: addNewProduct.price,
@@ -85,9 +85,7 @@ class App extends Component {
     })
   }
 
-  newProducts = (name,categories,price,count) => {
-
-    
+  newProductsArr = (name,categories,price,count) => {
     const products = this.state.products;
     const selectedProduct = this.state.changeItem;
 
@@ -105,12 +103,6 @@ class App extends Component {
 
     this.setState({
       products: products,
-      isChangeProduct: false,
-    })
-  }
-
-  closeChangeForm = () => {
-    this.setState({
       isChangeProduct: false,
     })
   }
@@ -133,13 +125,13 @@ class App extends Component {
           </Table.Header>
           <Table.Body>
             {
-              products.map((item) => <ProductTable product={item} key={item.id} changeProduct={this.changeProduct} onRemove={this.deleteProduct} closeChangeForm={this.closeChangeForm}/>)
+              products.map((item) => <ProductTable product={item} key={item.id} changeProduct={this.changeProduct} onRemove={this.deleteProduct}/>)
             }
           </Table.Body>    
         </Table>
         <AddProductForm onAddProduct={this.addProduct} products={products}/>
         {
-          this.state.isChangeProduct ? <ChangeProduct product={this.state.changeItem} newProduct = {this.newProducts}></ChangeProduct> : null
+          this.state.isChangeProduct ? <ChangeProduct product={this.state.changeItem} newProductsArr = {this.newProductsArr}></ChangeProduct> : null
         }
       </div>
     )
