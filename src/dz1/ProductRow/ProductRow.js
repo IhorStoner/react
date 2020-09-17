@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css'
+import { Table, Button } from 'semantic-ui-react';
 
-class ProductTable extends Component {
+class ProductRow extends Component {
 
   state = {
     name:'',
@@ -21,16 +20,16 @@ class ProductTable extends Component {
         <Table.Cell>{product.price}</Table.Cell>
         <Table.Cell>{product.count}</Table.Cell>
         <Table.Cell>
-          <button onClick={() => this.props.onRemove(product)}>
+          <Button onClick={() => this.props.onRemove(product)}>
             Удалить
-          </button>
-          <button onClick={this.props.changeProduct} data-id={product.id}>
+          </Button>
+          <Button onClick={this.props.changeProduct} data-id={product.id}>
             Изменить
-          </button>
+          </Button>
         </Table.Cell>
       </Table.Row>
     );
   }
 }
 
-export default ProductTable;
+export default ProductRow;
