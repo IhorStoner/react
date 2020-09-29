@@ -4,14 +4,13 @@ import { Comment, Loader } from 'semantic-ui-react'
 export default class Comments extends Component {
   state = {
     comments: [],
-    postId: this.props.postId,
     isCommentNotFetching: true,
   }
 
   componentDidMount = () => {
     this.setState({ isCommentNotFetching: false });
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${this.state.postId}/comments`)
+    fetch(`https://jsonplaceholder.typicode.com/posts/${this.props.postId}/comments`)
       .then(response => response.json())
       .then(comments => {
         this.setState({ comments })
