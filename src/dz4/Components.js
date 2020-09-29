@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import useLocalStorage from './customHooks/useLocalStorage';
-import { Header,Input } from 'semantic-ui-react';
+import { Button, Header,Input } from 'semantic-ui-react';
 import useDocumentTitle from './customHooks/useDocumentTitle';
 import useOnlineStatus from './customHooks/useOnlineStatus'
 
 export default function Components() {
   const [ name, setName ] = useLocalStorage('name','Bob');
   const [ title, setTitle ] = useDocumentTitle('Занятия | Hillel LMS')
+  const [ online ] = useOnlineStatus();
 
-  const user = {
-    id:'0',
-    name: 'Travis Scott',
-    online: true,
-  }
-
-  const online = useOnlineStatus(user);
-
-  console.log(`${user.name} is online: ${online}`)
+  console.log(`User is online: ${online}`)
 
   return (
     <div>

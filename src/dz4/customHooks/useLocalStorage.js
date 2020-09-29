@@ -3,8 +3,11 @@ import { useState } from 'react';
 export default function useLocalStorage(key) {
   const [storedValue, setStoredValue ] = useState(() => {
     const item = localStorage.getItem(key);
+    const defaultValue = 'localStorage is empty';
     if(item){
       return JSON.parse(item);
+    } else {
+      return 
     }
   });
 

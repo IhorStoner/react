@@ -1,12 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
-export default function useOnlineStatus(user) {
-  const online = user.online;
-  const [status,setStatus] = useState(user.online)
+export default function useOnlineStatus() {
+  let initialStatus = navigator.onLine;
+  const [ status,setStatus ] = useState(initialStatus);
 
-  if(online) {
-    return 'online'
-  } else {
-    return 'offline'
+  useEffect(() => {
+    updateOnlineStatus();
+  }, [initialStatus])
+
+  const updateOnlineStatus = () => {
+    setStatus(
+      navigator.onLine
+    )
   }
+
+  // const online = window.addEventListener('online',updateOnlineStatus);
+  // const offline = window.addEventListener('offline',updateOnlineStatus);
+
+  return [ status ]
 }
