@@ -9,21 +9,15 @@ import PropTypes from 'prop-types';
 export default class Slider extends Component {
 
   state = {
-    config: {
-      type: this.props.options.type ? this.props.options.type : null, // slider or carousel
-      startAt: this.props.options.startAt ? this.props.options.startAt : null, //type number
-      perView: this.props.options.perView ? this.props.options.perView : null, //type number
-      autoplay: this.props.options.autoplay ? this.props.options.autoplay : null, // type number or bool
-    },
     pause: true,
   }
   
   componentDidMount = () => {
-    this.glide = new Glide('.glide',this.state.config).mount()
+    this.glide = new Glide('.glide',this.props.config).mount()
   }
 
   componentDidUpdate = () => {
-    this.glide.update(this.state.config);
+    this.glide.update(this.props.config);
   }
 
   componentWillUnmount = () => {
