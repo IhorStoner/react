@@ -4,18 +4,21 @@ export default function useOnlineStatus() {
   let initialStatus = navigator.onLine;
   const [ status,setStatus ] = useState(initialStatus);
 
-  useEffect(() => {
-    updateOnlineStatus();
-  }, [initialStatus])
-
   const updateOnlineStatus = () => {
     setStatus(
       navigator.onLine
     )
   }
 
-  // const online = window.addEventListener('online',updateOnlineStatus);
-  // const offline = window.addEventListener('offline',updateOnlineStatus);
+  useEffect(() => {
+    window.addEventListener('online',updateOnlineStatus);
+    window.addEventListener('offline',updateOnlineStatus);
+    
+    return () => {
+      window.removeEventListener('online');
+      window.removeEventListener('offline');
+    }
+  }, [initialStatus])
 
-  return [ status ]
+  return status
 }

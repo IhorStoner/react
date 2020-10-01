@@ -7,7 +7,7 @@ import useOnlineStatus from './customHooks/useOnlineStatus'
 export default function Components() {
   const [ name, setName ] = useLocalStorage('name','Bob');
   const [ title, setTitle ] = useDocumentTitle('Занятия | Hillel LMS')
-  const [ online ] = useOnlineStatus();
+  const online = useOnlineStatus();
 
   console.log(`User is online: ${online}`)
 
