@@ -24,53 +24,30 @@ export default class Slider extends Component {
     this.glide.destroy();
   }
 
-  pauseSlider = () => {
-    if(this.state.config.autoplay){
-      this.setState({
-        config: {
-          autoplay: false,
-        }
-      })
-    } else {
-      this.setState({
-        config: {
-          autoplay: true,
-        }
-      })
-    }
-  }
 
   render() {
     const images = this.props.children
 
     return (
       <>
-      <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
+      <div className="glide">
+        <div className="glide__track" data-glide-el="track">
+          <ul className="glide__slides">
             {
               images.map((img,i) => (
-                <li key={i} class="glide__slide">
+                <li key={i} className="glide__slide">
                   {img}
                 </li>
               ))
             }
           </ul>
         </div>
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        <div className="glide__arrows" data-glide-el="controls">
+          <button className="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+          <button className="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
         </div>
       </div>
-      <Button onClick={this.pauseSlider} >{this.state.pause ? 'Pause' : 'Play'}</Button>
       </>
     )
   }
 }
-
-Slider.propTypes = {
-  type: PropTypes.string,
-  startAt: PropTypes.number,
-  perView: PropTypes.number,
-  autoplay: PropTypes.bool || PropTypes.number,
-};

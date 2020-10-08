@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useLocalStorage from './customHooks/useLocalStorage';
-import { Button, Header,Input } from 'semantic-ui-react';
+import { Header,Input } from 'semantic-ui-react';
 import useDocumentTitle from './customHooks/useDocumentTitle';
 import useOnlineStatus from './customHooks/useOnlineStatus'
 
