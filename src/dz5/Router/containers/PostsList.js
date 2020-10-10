@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import { 
   useParams, 
-  Redirect,NavLink,  
+  Redirect,
+  NavLink,  
   BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch
  } from 'react-router-dom'
 import {Card,Header} from 'semantic-ui-react'
 
 
 export default function PostsList() {
-  const [posts,setPosts] = useState([]);
+  const [ posts,setPosts ] = useState([]);
   const { userId } = useParams();
   
   useEffect(() => {
@@ -21,6 +19,10 @@ export default function PostsList() {
         setPosts(posts);
       })
   }, [userId]);
+
+  if(!posts){
+    return <Redirect to='/users'></Redirect>
+  }
 
   return (
     <div>

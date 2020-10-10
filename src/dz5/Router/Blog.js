@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  NavLink,
+  withRouter,
 } from "react-router-dom";
 import Users from "./containers/Users";
 import Page404 from "./containers/404";
@@ -11,27 +12,18 @@ import UserDetails from "./containers/UserDetails";
 import AlbumsList from './containers/AlbumsList';
 import PostsList from './containers/PostsList';
 import AlbumPhotos from './containers/AlbumPhotos'
-import { Grid, GridColumn } from 'semantic-ui-react'
+import { Grid, GridColumn } from 'semantic-ui-react';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-function Blog() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <NavLink exact activeClassName='active' to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink exact activeClassName='active' to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName='active' to="/users">Users</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/" exact>
+
+const AnimatedSwitch = withRouter(({ location }) => (
+  <TransitionGroup className="transition-group">
+    <CSSTransition key={location.key}
+          timeout={{ enter: 300, exit: 300 }}
+          classNames="fade">
+      <section className="route-section">
+      <Switch location={location}>
+         <Route path="/" exact>
             Home
           </Route>
           <Route path="/about" exact>
@@ -69,7 +61,30 @@ function Blog() {
           <Route path='*'>
             <Page404 />
           </Route>
-        </Switch>
+      </Switch>
+      </section>
+    </CSSTransition>
+  </TransitionGroup>
+));
+
+function Blog() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <NavLink exact activeClassName='active' to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName='active' to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName='active' to="/users">Users</NavLink>
+            </li>
+          </ul>
+        </nav>
+        <AnimatedSwitch></AnimatedSwitch>
       </div>
     </Router>
   );

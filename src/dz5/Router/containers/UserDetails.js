@@ -39,7 +39,6 @@ function UserDetails() {
             <NavLink to={`/albums/${userId}`}>Albums</NavLink>
           </GridColumn>
         </Grid>
-       
         }
       />
     </div>

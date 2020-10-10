@@ -36,6 +36,7 @@ class App extends Component {
         <ThemeContext.Provider value={theme}>
           <Container className='page'>
             <BlogV2 />
+            {/* <BlogV3></BlogV3> */}
           </Container>
         </ThemeContext.Provider>
       </div>

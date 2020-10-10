@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import { 
   useParams, 
-  Redirect,NavLink,  
+  Redirect,
+  NavLink,
+    
  } from 'react-router-dom'
 import {Card,Header} from 'semantic-ui-react'
 
-
-
-
 export default function AlbumsList() {
   const [albums,setAlbums] = useState([]);
-  const { userId } = useParams();
-  
+  const { userId} = useParams();
+
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
       .then(response => response.json())
@@ -19,6 +18,10 @@ export default function AlbumsList() {
         setAlbums(albums);
       })
   }, [userId]);
+
+  if(!albums){
+    return <Redirect to='/users'></Redirect>
+  }
 
   return (
     <div>

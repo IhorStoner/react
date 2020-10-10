@@ -5,15 +5,13 @@ import UserDetails from "./UserDetails";
 
 function Users() {
   const [users, setUsers] = useState([]);
+  const { path, url } = useRouteMatch();
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users`)
       .then(response => response.json())
       .then(users => setUsers(users))
   }, []);
-
-  const { path, url } = useRouteMatch();
-
 
   return (
     <Container>
