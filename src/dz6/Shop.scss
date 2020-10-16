@@ -1,0 +1,82 @@
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #222222;
+    padding: 25px 0 25px 0;
+    width: 100%;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+
+  &__link {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      color: #FFF;
+      text-align: center;
+      position: relative;
+      border: 2px solid #FF7A00;
+      border-radius: 10%;
+      margin-right: 5px;
+      border-color: transparent;
+      cursor: pointer;
+      padding: 10px;
+
+      &:last-child {
+          margin-right: 0;
+      }
+
+      &:hover {
+          color: #FF7A00; 
+          border-color: #FF7A00;
+      }
+
+      &--active {
+          color: #FF7A00;
+          border-color: #FF7A00;
+      }
+  }
+}
+
+.basket {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60px;
+    position: relative;
+
+    &__btn {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        border: none;
+        background-image: url(./assets/svg/basket.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        outline: none;
+    }
+
+    &__counter {
+        font-weight: normal;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+        text-transform: capitalize;
+        color: #FFF;
+        margin-left: 10px;
+    }
+}
