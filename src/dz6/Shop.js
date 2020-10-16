@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, BrowserRouter, Switch, Route } from 'react-router-dom'
+import { NavLink, BrowserRouter, Switch, Route, useRouteMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './Shop.scss'
 import Home from './components/Home/Home'
@@ -38,6 +38,9 @@ export default function Shop() {
           </div>
         </header>
         <Switch>
+          <Route path='/products/:productId'>
+            <InfoProduct></InfoProduct>
+          </Route>
           <Route path='/' exact>
             <Home></Home>
           </Route>
@@ -46,9 +49,6 @@ export default function Shop() {
           </Route>
           <Route path='/basket'>
             <Basket></Basket>
-          </Route>
-          <Route path='/products/:productId'>
-            <InfoProduct>Info</InfoProduct>
           </Route>
         </Switch>
       </BrowserRouter>
