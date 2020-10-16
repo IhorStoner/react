@@ -5,15 +5,10 @@ import './Shop.scss'
 import Home from './components/Home/Home'
 import Products from './components/Products/Products'
 import Basket from './components/Basket/Basket'
+import InfoProduct from './components/InfoProduct/InfoProduct'
 
 export default function Shop() {
   const { basket } = useSelector(state => state.products)
-  // const [ valueStorage, setValueStorage ] = useLocalStorage('basket');
-  // // if(!valueStorage){
-  // //   setValueStorage([])
-  // // }
-  // const stateBasket = useSelector(state => state.basket)
-  // stateBasket.subscribe(setValueStorage(basket))
 
   const basketCounter = () => {
     let counter = 0;
@@ -51,6 +46,9 @@ export default function Shop() {
           </Route>
           <Route path='/basket'>
             <Basket></Basket>
+          </Route>
+          <Route path='/products/:productId'>
+            <InfoProduct>Info</InfoProduct>
           </Route>
         </Switch>
       </BrowserRouter>

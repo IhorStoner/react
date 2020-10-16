@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { addInBasket } from '../../redux/actions/productsActions';
 import './Card.scss'
 import { useDispatch  } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 
 export default function Card(props) {
   const product = props.product;
@@ -20,7 +21,7 @@ export default function Card(props) {
             {product.price} грн
         </p>
         <div className="product__buttons">
-            <button className="btn btn--black" data-id={product.id}>Посмотреть</button>
+            <NavLink to={`/products/${product.id}`} className="btn btn--black" data-id={product.id} >Посмотреть</NavLink>
             <a title='добавить в корзину' className="btn btn--plus" id="addInBasket" onClick={() => dispatch(addInBasket(product.id))} data-id={product.id}></a>
         </div>
       </div>  
