@@ -8,16 +8,18 @@ import '../node_modules/semantic-ui-css/semantic.min.css';
 // import ThemeContext from './dz5/context/ThemeContext';
 // import {Container} from 'semantic-ui-react';
 // import BlogV2 from './dz5/Router/Blog';
-import Shop from './dz6/Shop'
+// import Shop from './dz6/Shop'
 import { Provider } from 'react-redux';
-import createStore from './dz6/redux/createStore';
-import { saveLocal } from './dz6/helpers/localStorage'
+// import createStore from './dz6/redux/createStore';
+// import { saveLocal } from './dz6/helpers/localStorage'
+import GitGists from './dz7/GitGists'
+import createStore from './dz7/redux/createStore';
 
 const store = createStore();
 
-store.subscribe(()=>{
-  saveLocal('basket',store.getState().products.basket)
-})
+// store.subscribe(()=>{
+//   saveLocal('basket',store.getState().products.basket)
+// })
 
 class App extends Component {
 
@@ -37,8 +39,11 @@ class App extends Component {
             <BlogV2 />
           </Container>
         </ThemeContext.Provider> */}
-        <Provider store={store}>
+        {/* <Provider store={store}>
           <Shop></Shop>
+        </Provider> */}
+        <Provider store={store}>
+          <GitGists/>
         </Provider>
       </div>
     )
