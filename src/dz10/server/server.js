@@ -18,10 +18,18 @@ app.use(bodyParser.json());
 
 app.use('/api', apiRouter);
 
+// app.use('/', express.static(path.join(__dirname, '../../../public', 'index.html')))
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../../../public', 'index.html'))
+// })
+
+
 app.use((req, res) => {
   res
     .status(404)
-    .sendFile(path.join(__dirname, '../../../public', 'index.html')) // отдает пустой index.html
+    
+    .sendFile(path.join(__dirname, '../../../build', 'index.html')) // отдает пустой index.html
 });
 
 app.use((err, req, res, next) => {
