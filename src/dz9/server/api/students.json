@@ -1,1 +1,43 @@
-[{"name":"Ihor","group":"351a","phonenumber":"+123123","id":1604067270404}]
+{
+  "coord": {
+    "lon": 30.73,
+    "lat": 46.48
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 283.93,
+    "feels_like": 278.06,
+    "temp_min": 283.71,
+    "temp_max": 284.15,
+    "pressure": 1019,
+    "humidity": 71
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 7,
+    "deg": 310
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1604319442,
+  "sys": {
+    "type": 1,
+    "id": 8915,
+    "country": "UA",
+    "sunrise": 1604292019,
+    "sunset": 1604328052
+  },
+  "timezone": 7200,
+  "id": 698740,
+  "name": "Odesa",
+  "cod": 200
+}

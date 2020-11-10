@@ -1,11 +1,12 @@
 const { Router } = require('express');
 require('express-async-errors')
 const studentValidator = require('../middlewares/studentValidator');
+const requireSignIn = require('../middlewares/requireSignIn')
 const StudentModel = require('../models/students')
 const studentsRouter = Router();
 
 //get all students
-studentsRouter.get('/', async (req,res) => {
+studentsRouter.get('/',requireSignIn, async (req,res) => {
   const students = await StudentModel.find({});
   res.json(students)
 })

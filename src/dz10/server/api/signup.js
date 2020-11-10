@@ -9,13 +9,12 @@ signUpRouter.post('/', async (req, res) => {
     const result = await student.save();
     res.status(201).send({ created_user_id: result._id });
   } catch (e) {
-    console.log(e);
-    res.status(500).send({ error: 'Something went wrong!' });
+    res.status(500).send({ error: 'Error:' + e });
   }
 });
 
 signUpRouter.get('/is_exist', async (req, res) => {
-  const result = await UserModel.exists({ email: req.query.email });
+  const result = await StudentModel.exists({ email: req.query.email });
   res.send({ is_exist: result })
 });
 

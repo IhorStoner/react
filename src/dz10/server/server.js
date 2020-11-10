@@ -18,19 +18,15 @@ app.use(bodyParser.json());
 
 app.use('/api', apiRouter);
 
-// app.use('/', express.static(path.join(__dirname, '../../../public', 'index.html')))
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, '../public')))
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../../../public', 'index.html'))
-// })
-
-
-app.use((req, res) => {
-  res
-    .status(404)
-    
-    .sendFile(path.join(__dirname, '../../../build', 'index.html')) // отдает пустой index.html
-});
+  app.use((req, res) => {
+    res
+      .status(404)
+      .sendFile(path.join(__dirname, '../public', 'index.html'))
+  });
+}
 
 app.use((err, req, res, next) => {
   res
@@ -38,7 +34,6 @@ app.use((err, req, res, next) => {
     .send({ error: err.message })
 });
 
-
-app.listen(3000, () => {
-  console.log('Server is running on 3000 port')
+app.listen(5000, () => {
+  console.log('Server is running on 5000 port')
 });

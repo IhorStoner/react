@@ -12,8 +12,9 @@ import '../node_modules/semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux';
 // import createStore from './dz6/redux/createStore';
 // import { saveLocal } from './dz6/helpers/localStorage'
-import GitGists from './dz7/GitGists'
-import createStore from './dz7/redux/createStore';
+// import GitGists from './dz7/GitGists'
+import createStore from './dz10/app/redux/createStore';
+import CrudApp from './dz10/app/CrudApp'
 
 const store = createStore();
 
@@ -33,17 +34,18 @@ class App extends Component {
           <img src='http://www.poleteli.ru/uploads/posts/2015-03/1425394409_wistaria2.jpg' height='500' alt='img2'></img>
           <img src='https://ru.diez.md/wp-content/uploads/2019/08/d79168a24069b3a9722ec91169074f8e-2.jpg' height='500' alt='img3'></img>
         </Slider> */}
-        {/* <Components></Components> */}
+        {/* <Components/> */}
         {/* <ThemeContext.Provider value={theme}>
           <Container className='page'>
-            <BlogV2 />
+            <BlogV2/>
           </Container>
         </ThemeContext.Provider> */}
         {/* <Provider store={store}>
-          <Shop></Shop>
+          <Shop/>
+          <GitGists/>
         </Provider> */}
         <Provider store={store}>
-          <GitGists/>
+          <CrudApp/>
         </Provider>
       </div>
     )

@@ -1,0 +1,10 @@
+.form {
+
+  & .label {
+    width: 140px;
+  }
+
+  &__input {
+    max-width: 350px;
+  }
+}
